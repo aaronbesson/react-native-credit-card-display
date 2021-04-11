@@ -1,0 +1,162 @@
+{
+  "name": "react-native-credit-card-display",
+  "version": "0.3.6",
+  "description": "Credit Card Component for React Native -- Display Only",
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "cpp",
+    "react-native-credit-card-display.podspec",
+    "!lib/typescript/example",
+    "!android/build",
+    "!ios/build",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "scripts": {
+    "test": "jest",
+    "typescript": "tsc --noEmit",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "prepare": "bob build",
+    "example": "yarn --cwd example",
+    "pods": "cd example && pod-install --quiet",
+    "stylecleanup": "stylecleanup fix \"{src,example}/**/*.{js,ts,tsx}\"",
+    "bootstrap": "yarn example && yarn && yarn pods",
+    "release": "echo 'Run `npx release-it` instead' && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "repository": "https://github.com/SConaway/react-native-credit-card-display",
+  "author": "Steven Conaway <steven.conaway@icloud.com> (https://github.com/SConaway)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SConaway/react-native-credit-card-display/issues"
+  },
+  "homepage": "https://github.com/SConaway/react-native-credit-card-display#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^11.0.0",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@release-it/conventional-changelog": "^2.0.0",
+    "@types/creditcardutils": "^1.0.0",
+    "@types/jest": "^26.0.19",
+    "@types/react": "^17.0.0",
+    "@types/react-native": "0.63.37",
+    "@types/react-native-flip-card": "^3.5.0",
+    "commitlint": "^11.0.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "jest": "^26.6.3",
+    "pod-install": "^0.1.14",
+    "prettier": "^2.2.1",
+    "react": "17.0.1",
+    "react-native": "0.63.4",
+    "react-native-builder-bob": "^0.18.1",
+    "release-it": "^14.2.2",
+    "stylecleanup": "^1.3.0",
+    "typescript": "^4.1.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "jest": {
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/example/node_modules",
+      "<rootDir>/lib/"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn lint && yarn typescript"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@react-native-community",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "quoteProps": "consistent",
+          "singleQuote": true,
+          "tabWidth": 2,
+          "trailingComma": "es5",
+          "useTabs": false
+        }
+      ],
+      "react-native/no-inline-styles": "off"
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "creditcardutils": "^1.0.0",
+    "react-native-flip-card": "^3.5.6"
+  }
+}
